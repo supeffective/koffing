@@ -7,7 +7,8 @@
   "keywords": [
     "pokemon",
     "smogon",
-    "showdown"
+    "showdown",
+    "pokemon-showdown"
   ],
   "repository": {
     "type": "git",
@@ -17,11 +18,10 @@
     "url": "https://github.com/capsulemonsters/smogon-parser/issues"
   },
   "homepage": "https://github.com/capsulemonsters/smogon-parser#readme",
-  "main": "dist/smogon-parser.min.js",
+  "main": "dist/smogon-parser.js",
   "scripts": {
-    "build": "npm run build-dev && npm run build-prod",
-    "build-prod": "npx webpack --mode production --output dist/smogon-parser.js",
-    "build-dev": "npx webpack --mode development --output dist/smogon-parser.dev.js",
+    "build": "npx webpack --mode production --output dist/smogon-parser.js",
+    "build-dev": "npx webpack --mode development --output dist/smogon-parser-dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
