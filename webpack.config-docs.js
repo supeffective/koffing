@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    entry: './docs/src/index.jsx',
+    entry: './docs/src/index.js',
     output: {
         path: __dirname + '/docs',
         publicPath: '/',
-        filename: 'bundle.min.js'
+        filename: 'assets/js/bundle.min.js'
     },
     module: {
         rules: [
