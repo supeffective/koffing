@@ -20,16 +20,21 @@
   "homepage": "https://github.com/capsulemonsters/smogon-parser#readme",
   "main": "dist/smogon-parser.js",
   "scripts": {
-    "build": "npx webpack --mode production --output dist/smogon-parser.js",
-    "build-dev": "npx webpack --mode development --output dist/smogon-parser-dev.js",
+    "start": "npx webpack-dev-server --config ./webpack.config-docs.js --mode development",
+    "build": "npx webpack --mode production",
+    "build-docs": "npx webpack --config ./webpack.config-docs.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "material-ui": "^1.0.0-beta.38",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.13"
-  },
-  "dependencies": {}
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  }
 }
