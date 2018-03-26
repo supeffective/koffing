@@ -74,7 +74,7 @@ const parse = function (content) {
                 if (!poke[prop]) {
                     poke[prop] = {};
                 }
-                poke[prop][data[2]] = data[1];
+                poke[prop][data[2]] = parseInt(data[1]);
             });
         }
     }
