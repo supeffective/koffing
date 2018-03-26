@@ -1,8 +1,8 @@
 {
-  "name": "smogon-parser",
+  "name": "koffing",
   "version": "0.1.0",
   "license": "MIT",
-  "description": "Smogon / Showdown parser for Pokémon strategy sets.",
+  "description": "Pokemon Showdown Team parser that converts your strategies to machine-readable JSON code.",
   "author": "Javi Aguilar (@itjsavi)",
   "keywords": [
     "pokemon",
@@ -12,13 +12,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/capsulemonsters/smogon-parser.git"
+    "url": "git+https://github.com/capsulemonsters/koffing.git"
   },
   "bugs": {
-    "url": "https://github.com/capsulemonsters/smogon-parser/issues"
+    "url": "https://github.com/capsulemonsters/koffing/issues"
   },
-  "homepage": "https://github.com/capsulemonsters/smogon-parser#readme",
-  "main": "dist/smogon-parser.js",
+  "homepage": "https://github.com/capsulemonsters/koffing#readme",
+  "main": "dist/koffing.js",
   "scripts": {
     "start": "npx webpack-dev-server --config ./webpack.config-docs.js --mode development",
     "build": "npx webpack --mode production",

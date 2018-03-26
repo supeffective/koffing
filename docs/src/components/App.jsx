@@ -6,8 +6,8 @@ import Paper from 'material-ui/Paper';
 import Typo from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 
-const title = 'Smogon Parser';
-const exampleInput = `=== [gen7] Ultra Beasts ===
+const title = 'Koffing - Pokemon Showdown Team parser';
+const exampleInput = `=== [gen7] My Ultra Beasts Team ===
 
 Headache (Blacephalon) @ Choice Scarf  
 Ability: Beast Boost  

@@ -5,7 +5,7 @@ import Team from "Team";
 import Pokemon from "Pokemon";
 import _parse from "Parser";
 
-class SmogonParser {
+class Koffing {
     /**
      * @param {String} text
      * @returns {Set}
@@ -51,5 +51,5 @@ class SmogonParser {
 }
 
 export {
-    SmogonParser
+    Koffing
 };

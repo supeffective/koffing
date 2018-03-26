@@ -5,7 +5,7 @@ module.exports = {
     output: {
         libraryTarget: "umd",
         path: __dirname + '/dist',
-        filename: 'smogon-parser.js'
+        filename: 'koffing.js'
     },
     module: {
         rules: [
