@@ -1,6 +1,6 @@
 "use strict";
 
-class Set {
+class PokemonTeamSet {
     constructor(teams = []) {
         this.teams = teams;
     }
@@ -12,4 +12,4 @@ class Set {
     }
 }
 
-export default Set;
+export default PokemonTeamSet;

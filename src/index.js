@@ -1,30 +1,30 @@
 "use strict";
 
-import Set from "Set";
-import Team from "Team";
 import Pokemon from "Pokemon";
-import _parse from "Parser";
+import PokemonTeam from "PokemonTeam";
+import PokemonTeamSet from "PokemonTeamSet";
+import ShowdownParser from "ShowdownParser";
 
 class Koffing {
     /**
      * @param {String} text
-     * @returns {Set}
+     * @returns {PokemonTeamSet}
      */
     static parse(text) {
         if (typeof text === 'string' || text instanceof String) {
-            return _parse(text);
+            return ShowdownParser.parse(text);
         }
         throw new Error("Invalid argument type for 'text'.");
     }
 
     /**
-     * @param {Set|Team|Pokemon} data
+     * @param {PokemonTeamSet|PokemonTeam|Pokemon} data
      * @returns {String}
      */
     static stringify(data) {
         if (
-            data instanceof Set
-            || data instanceof Team
+            data instanceof PokemonTeamSet
+            || data instanceof PokemonTeam
             || data instanceof Pokemon
         ) {
             return data.toString();
@@ -33,7 +33,7 @@ class Koffing {
     }
 
     /**
-     * @param {String|Set|Team|Pokemon} value
+     * @param {String|PokemonTeamSet|PokemonTeam|Pokemon} value
      * @returns {boolean}
      */
     static isValid(value) {
@@ -53,3 +53,5 @@ class Koffing {
 export {
     Koffing
 };
+
+export default Koffing;

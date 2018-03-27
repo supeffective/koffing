@@ -1,8 +1,8 @@
 "use strict";
 
-import Team from "Team";
 import Pokemon from "Pokemon";
-import Set from "Set";
+import PokemonTeam from "PokemonTeam";
+import PokemonTeamSet from "PokemonTeamSet";
 
 const regexes = {
     "team": /^=== \[(.*)\] (.*) ===$/,
@@ -40,7 +40,7 @@ const parse = function (content) {
 
     function savePoke() {
         if (!currTeam) {
-            currTeam = new Team(defaultTeamData.name, defaultTeamData.format);
+            currTeam = new PokemonTeam(defaultTeamData.name, defaultTeamData.format);
             teams.push(currTeam);
         }
         if (currPoke) {
@@ -52,6 +52,9 @@ const parse = function (content) {
     function assign(poke, line, key) {
         if (regexes.is(line, key)) {
             currPoke[key] = regexes.get(line, key)[1].trim();
+            if(!isNaN(currPoke[key])){
+                currPoke[key] = parseFloat(currPoke[key]);
+            }
         }
     }
 
@@ -99,7 +102,7 @@ const parse = function (content) {
     lines.forEach(function (line) {
         if (regexes.is(line, "team")) {
             let teamData = regexes.get(line, "team");
-            currTeam = new Team(teamData[2], teamData[1]);
+            currTeam = new PokemonTeam(teamData[2], teamData[1]);
             teams.push(currTeam);
             return;
         }
@@ -125,7 +128,9 @@ const parse = function (content) {
 
     savePoke();
 
-    return new Set(teams);
+    return new PokemonTeamSet(teams);
 };
 
-export default parse;
+export default {
+    parse: parse
+};

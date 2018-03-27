@@ -1,6 +1,6 @@
 "use strict";
 
-class Team {
+class PokemonTeam {
     constructor(name = undefined, format = undefined, pokemon = []) {
         this.name = name;
         this.format = format;
@@ -18,4 +18,4 @@ class Team {
     }
 }
 
-export default Team;
+export default PokemonTeam;
