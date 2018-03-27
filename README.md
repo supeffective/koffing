@@ -54,5 +54,5 @@ The above example is using ES6+ syntax, but can also use it in NodeJS with
 case, without the import shown in the example).
 
 
-You can also try the [Online Parser](), which does not require you to download
+You can also try the [Online Parser](https://capsulemonsters.github.io/koffing), which does not require you to download
 any script if what you want is a one-off conversion.
