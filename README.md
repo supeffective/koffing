@@ -1,7 +1,8 @@
 # Koffing
-
 Koffing is a Pokemon Showdown Team parser that converts your strategies to 
-machine-readable JSON code.
+machine-readable JSON code and also from JSON back to Showdown.
+
+![koffing](docs/assets/img/koffing.png) 🔁![koffing](docs/assets/img/koffing-shiny.png)
 
 ## Installation
 
