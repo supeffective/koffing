@@ -24,15 +24,27 @@ import {Koffing} from 'koffing';
 
 const team = `=== [gen7] Example Team ===
 
-Koffing @ Eviolite
+Smogon (Koffing) (F) @ Eviolite
 Level: 5
 Ability: Levitate
+Shiny: Yes
+Happiness: 255
 EVs: 36 HP / 236 Def / 236 SpD
+IVs: 31 HP / 30 Atk / 31 SpA / 30 SpD / 31 Spe
 Bold Nature
 - Will-O-Wisp
 - Pain Split
 - Sludge Bomb
-- Fire Blast`;
+- Fire Blast
+
+Weezing @ Black Sludge
+Ability: Levitate
+EVs: 252 HP / 160 Def / 96 Spe
+Bold Nature
+- Sludge Bomb
+- Will-O-Wisp
+- Toxic Spikes
+- Taunt`;
 
 
 const parsedTeam = Koffing.parse(team);
@@ -48,9 +60,9 @@ console.log(parsedTeam.toString());
 console.log(parsedTeam + "");
 ```
 
-The above example is using ES6+ syntax, but can also use it in NodeJS with 
+The above example is using ES6+ syntax, but you can also use it in NodeJS with 
 `const Koffing = require('koffing');`, as well as in the browser loading the
-`koffing.js` script and using the global `Koffing` object (directly in this
+`dist/koffing.js` script and using the global `Koffing` object (directly in this
 case, without the import shown in the example).
 
 

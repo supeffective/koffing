@@ -10,10 +10,13 @@ import {Koffing} from "../../../src/index";
 
 const exampleTeam = `=== [gen7] Example Team ===
 
-Koffing @ Eviolite
+Smogon (Koffing) (F) @ Eviolite
 Level: 5
 Ability: Levitate
+Shiny: Yes
+Happiness: 255
 EVs: 36 HP / 236 Def / 236 SpD
+IVs: 31 HP / 30 Atk / 31 SpA / 30 SpD / 31 Spe
 Bold Nature
 - Will-O-Wisp
 - Pain Split
@@ -86,7 +89,7 @@ class BoardComponent extends React.Component {
         return (
             <div className={classes.root}>
                 <Grid container spacing={24}>
-                    <Grid item sm={12} md={7}>
+                    <Grid item xs={12} sm={12} md={6}>
                         <Paper className={classes.paper} elevation={1}>
                             <TextField
                                 autocomplete="off"
@@ -110,7 +113,7 @@ class BoardComponent extends React.Component {
                             />
                         </Paper>
                     </Grid>
-                    <Grid item sm={12} md={5}>
+                    <Grid item xs={12} sm={12} md={6}>
                         <Paper className={classes.paper} elevation={1}>
                             <div className="koffing-out">
                                 <Code code={this.state.json} language={'json'}/>
