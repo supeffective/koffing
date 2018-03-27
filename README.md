@@ -40,13 +40,12 @@ const parsedTeam = Koffing.parse(team);
 // This will log a PokemonTeamSet object:
 console.log(parsedTeam);
 
-
 // Convert it back to the Showdown format:
 console.log(Koffing.stringify(parsedTeam));
 // which is the same as:
 console.log(parsedTeam.toString());
 // and:
-console.log(parsedTeam);
+console.log(parsedTeam + "");
 ```
 
 The above example is using ES6+ syntax, but can also use it in NodeJS with 
