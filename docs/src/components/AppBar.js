@@ -37,7 +37,7 @@ class AppBarComponent extends React.Component {
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton aria-label="Home" href="#">
-                            <img className={classes.sprite} src="assets/img/koffing.png"/>
+                            <img className={classes.sprite + " koffing-sprite"} src="assets/img/koffing.png"/>
                         </IconButton>
                         <Typo variant="title" color="inherit" className={classes.title}>
                             {title}
