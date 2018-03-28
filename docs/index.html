@@ -35,6 +35,24 @@
         a {
             color: #6B71B8;
         }
+
+        .AppBarComponent-sprite-4 {
+            animation-name: koffing;
+            animation-duration: 700ms;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+
+        /* Standard syntax */
+        @keyframes koffing {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            100% {
+                transform: translate(-2px, -3px);
+            }
+        }
     </style>
 </head>
 <body>

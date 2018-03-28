@@ -5,10 +5,11 @@ import styled from 'styled';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import TextField from "material-ui/TextField";
+import Button from "material-ui/Button";
 import Code from "components/Code";
 import {Koffing} from "../../../src/index";
 
-const exampleTeam = `=== [gen7] Example Team ===
+const exampleTeam = `=== [gen7] Folder 1/Example Team ===
 
 Smogon (Koffing) (F) @ Eviolite
 Level: 5
@@ -30,7 +31,8 @@ Bold Nature
 - Sludge Bomb
 - Will-O-Wisp
 - Toxic Spikes
-- Taunt`;
+- Taunt
+`;
 
 const styles = (theme) => ({
     root: theme.mixins.gutters({
@@ -68,10 +70,6 @@ class BoardComponent extends React.Component {
     }
 
     update(value) {
-        if (!value) {
-            return;
-        }
-
         let parsedTeams = Koffing.parse(value);
 
         this.setState({
@@ -84,6 +82,12 @@ class BoardComponent extends React.Component {
         this.update(event.target.value);
     }
 
+    format() {
+        this.update(
+            Koffing.prettify(this.state.text) + "\n"
+        );
+    }
+
     render() {
         const {classes} = this.props;
         return (
@@ -92,10 +96,10 @@ class BoardComponent extends React.Component {
                     <Grid item xs={12} sm={12} md={6}>
                         <Paper className={classes.paper} elevation={1}>
                             <TextField
-                                autocomplete="off"
-                                autocorrect="off"
-                                autocapitalize="off"
-                                spellcheck="false"
+                                autoComplete="off"
+                                autoCorrect="off"
+                                autoCapitalize="off"
+                                spellCheck="false"
                                 multiline
                                 className={classes.textField}
                                 rows="12"
@@ -111,6 +115,8 @@ class BoardComponent extends React.Component {
                                 }}
                                 onChange={this.handleChange}
                             />
+                            <Button onClick={() => this.format()} variant={'raised'} color={'primary'}>Prettify</Button>
+                            &nbsp;<Button onClick={() => this.update('')} variant={'flat'}>Clear</Button>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
