@@ -70,11 +70,9 @@ class BoardComponent extends React.Component {
     }
 
     update(value) {
-        let parsedTeams = Koffing.parse(value);
-
         this.setState({
             text: value,
-            json: JSON.stringify(parsedTeams, null, 2)
+            json: Koffing.toJson(value)
         });
     }
 
