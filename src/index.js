@@ -7,51 +7,72 @@ import ShowdownParser from "ShowdownParser";
 
 class Koffing {
     /**
-     * @param {String} text
+     * Converts from Showdown to a PokemonTeamSet object.
+     *
+     * @param {String|Pokemon|PokemonTeam|PokemonTeamSet|ShowdownParser} data Showdown code or object
      * @returns {PokemonTeamSet}
      */
-    static parse(text) {
-        if (typeof text === 'string' || text instanceof String) {
-            return ShowdownParser.parse(text);
-        }
-        throw new Error("Invalid argument type for 'text'.");
-    }
-
-    /**
-     * @param {PokemonTeamSet|PokemonTeam|Pokemon} data
-     * @returns {String}
-     */
-    static stringify(data) {
+    static parse(data) {
         if (
             data instanceof PokemonTeamSet
             || data instanceof PokemonTeam
             || data instanceof Pokemon
         ) {
-            return data.toString();
+            return data;
         }
-        throw new Error("Invalid argument type for 'data'.");
+        if (data instanceof ShowdownParser) {
+            return data.parse();
+        }
+        return (new ShowdownParser(data)).parse();
     }
 
     /**
-     * @param {String|PokemonTeamSet|PokemonTeam|Pokemon} value
-     * @returns {boolean}
+     * Prettifies and sanitizes the given Showdown code.
+     *
+     * @param {String|Pokemon|PokemonTeam|PokemonTeamSet|ShowdownParser} data Showdown code or object
+     * @returns {String}
      */
-    static isValid(value) {
-        try {
-            if (typeof value === 'string' || value instanceof String) {
-                this.parse(value);
-            } else {
-                this.stringify(value);
-            }
-            return true;
-        } catch (e) {
-            return false;
+    static prettify(data) {
+        return this.parse(data).toShowdown();
+    }
+
+    /**
+     * Converts from Showdown to JSON code.
+     *
+     * @param {String|Pokemon|PokemonTeam|PokemonTeamSet|ShowdownParser} data Showdown code or object
+     * @returns {String}
+     */
+    static toJson(data) {
+        return this.parse(data).toJson();
+    }
+
+    /**
+     * Converts from JSON to Showdown code.
+     *
+     * @param {String|Object|Pokemon|PokemonTeam|PokemonTeamSet|ShowdownParser} data JSON code or object
+     * @returns {String}
+     */
+    static toShowdown(data) {
+        if (
+            data instanceof PokemonTeamSet
+            || data instanceof PokemonTeam
+            || data instanceof Pokemon
+        ) {
+            return data.toShowdown();
         }
+        if (data instanceof ShowdownParser) {
+            return data.parse().format();
+        }
+        if (typeof value === 'string' || value instanceof String) {
+            data = JSON.parse(data);
+        }
+        return PokemonTeamSet.fromObject(JSON.parse(data)).toShowdown();
     }
 }
 
 export {
-    Koffing
+    Koffing,
+    ShowdownParser
 };
 
 export default Koffing;

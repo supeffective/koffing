@@ -13,7 +13,7 @@ npm i --save koffing
 
 In the browser, using a CDN:
 ```html
-<script src="https://cdn.rawgit.com/capsulemonsters/koffing/0.1.0/dist/koffing.js"></script>
+<script src="https://cdn.rawgit.com/capsulemonsters/koffing/0.3.0/dist/koffing.js"></script>
 ```
 
 ### Usage
@@ -22,7 +22,8 @@ In the browser, using a CDN:
 
 import {Koffing} from 'koffing';
 
-const team = `=== [gen7] Example Team ===
+const teamCode = `
+=== [gen7] Folder 1/Example Team ===
 
 Smogon (Koffing) (F) @ Eviolite
 Level: 5
@@ -44,21 +45,27 @@ Bold Nature
 - Sludge Bomb
 - Will-O-Wisp
 - Toxic Spikes
-- Taunt`;
+- Taunt
+`;
 
 
-const parsedTeam = Koffing.parse(team);
+const parsedTeam = Koffing.parse(teamCode);
 
 // This will log a PokemonTeamSet object:
 console.log(parsedTeam);
-
-// Convert it back to the Showdown format:
-console.log(Koffing.stringify(parsedTeam));
+// Convert it back to the Showdown format (prettified):
+console.log(parsedTeam.toShowdown());
 // which is the same as:
 console.log(parsedTeam.toString());
-// and:
+// and the same as:
 console.log(parsedTeam + "");
+// You can also convert the object to JSON:
+console.log(parsedTeam.toJson());
+// which is the same as:
+console.log(Koffing.toJson(teamCode));
 ```
+
+`Koffing` also has other methods like `prettify`, `toJson` and `toShowdown`.
 
 The above example is using ES6+ syntax, but you can also use it in NodeJS with 
 `const Koffing = require('koffing');`, as well as in the browser loading the
