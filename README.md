@@ -37,6 +37,20 @@ In the browser, using a CDN:
 
 ## Usage
 
+### Javascript (ES5, web)
+```html
+<script src="dist/koffing.min.js"></script>
+<script>
+var teamCode = `=== [gen7] Folder 1/Example Team ===`;
+var parsedTeam = Koffing.parse(teamCode);
+console.log(parsedTeam);
+
+// Note that the ShowdownParser class, which is used internally by the Koffing class
+// is also exposed in the global scope:
+console.log(new ShowdownParser(teamCode).parse());
+</script>
+```
+
 ### Javascript (ES6+, universal)
 ```js
 "use strict";
@@ -74,20 +88,6 @@ console.log(parsedTeam + "");
 console.log(parsedTeam.toJson());
 // which is the same as:
 console.log(Koffing.toJson(teamCode));
-```
-
-### Javascript (ES5, web)
-```html
-<script src="dist/koffing.min.js"></script>
-<script>
-var teamCode = `=== [gen7] Folder 1/Example Team ===`;
-var parsedTeam = Koffing.parse(teamCode);
-console.log(parsedTeam);
-
-// Note that the ShowdownParser class, which is used internally by the Koffing class
-// is also exposed in the global scope:
-console.log(new ShowdownParser(teamCode).parse());
-</script>
 ```
 
 ### NodeJS
