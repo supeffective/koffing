@@ -35,9 +35,9 @@ In the browser, using a CDN:
 <script src="https://cdn.rawgit.com/capsulemonsters/koffing/0.4.0/dist/koffing.min.js"></script>
 ```
 
-### Usage
+## Usage
 
-#### Modern Javascript (ES6+)
+### Javascript (ES6+, universal)
 ```js
 "use strict";
 
@@ -76,7 +76,7 @@ console.log(parsedTeam.toJson());
 console.log(Koffing.toJson(teamCode));
 ```
 
-#### Web (ES5)
+### Javascript (ES5, web)
 ```html
 <script src="dist/koffing.min.js"></script>
 <script>
@@ -90,7 +90,7 @@ console.log(new ShowdownParser(teamCode).parse());
 </script>
 ```
 
-#### NodeJS
+### NodeJS
 ```js
 const Koffing = require('koffing').Koffing;
 
@@ -100,7 +100,7 @@ console.log(parsedTeam);
 ```
 
 
-### Class Reference
+## Class Reference
 The `Koffing` class is basically a wrapper of the `ShowdownParser` class, the difference is that it can be used statically.
 
 `ShowdownParser` class methods:
