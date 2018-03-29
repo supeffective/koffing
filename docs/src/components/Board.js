@@ -82,7 +82,7 @@ class BoardComponent extends React.Component {
 
     format() {
         this.update(
-            Koffing.prettify(this.state.text) + "\n"
+            Koffing.format(this.state.text) + "\n"
         );
     }
 

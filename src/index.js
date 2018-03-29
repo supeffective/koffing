@@ -32,7 +32,7 @@ class Koffing {
      * @param {String|Pokemon|PokemonTeam|PokemonTeamSet|ShowdownParser} data Showdown code or object
      * @returns {String}
      */
-    static prettify(data) {
+    static format(data) {
         return this.parse(data).toShowdown();
     }
 
@@ -74,5 +74,3 @@ export {
     Koffing,
     ShowdownParser
 };
-
-export default Koffing;
