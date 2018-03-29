@@ -21,8 +21,9 @@
   "main": "dist/koffing.js",
   "scripts": {
     "start": "npx webpack-dev-server --config ./webpack.config-docs.js --mode development",
-    "build": "npx webpack --mode production",
+    "build-dist": "npx webpack --mode production",
     "build-docs": "npx webpack --config ./webpack.config-docs.js --mode production",
+    "build-all": "npm run build-dist && npm run build-docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
