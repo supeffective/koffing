@@ -1,14 +1,14 @@
 "use strict";
 
 import React from 'react';
-import styled from 'styled';
-import AppBar from "material-ui/AppBar";
-import Toolbar from "material-ui/Toolbar";
-import Typo from 'material-ui/Typography';
-import IconButton from "material-ui/IconButton";
+import styled from '../styled';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typo from '@material-ui/core/Typography';
+import IconButton from "@material-ui/core/IconButton";
 
 const title = 'Koffing - Pokémon Showdown Team Parser';
-const sourceUrl = 'https://github.com/capsulemonsters/koffing';
+const sourceUrl = 'https://github.com/itsjavi/koffing';
 const styles = {
     root: {
         flexGrow: 1
@@ -39,7 +39,7 @@ class AppBarComponent extends React.Component {
                         <IconButton aria-label="Home" href="#">
                             <img className={classes.sprite + " koffing-sprite"} src="assets/img/koffing.png"/>
                         </IconButton>
-                        <Typo variant="title" color="inherit" className={classes.title}>
+                        <Typo style={{fontSize: '1.3125rem'}} color="inherit" className={classes.title}>
                             {title}
                         </Typo>
                         <IconButton color="inherit" href={sourceUrl} title="Source Code">

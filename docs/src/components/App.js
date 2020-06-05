@@ -1,10 +1,10 @@
 "use strict";
 
 import React from 'react';
-import styled from 'styled';
-import AppBar from 'components/AppBar';
-import Board from "components/Board";
-import Footer from "components/Footer";
+import styled from '../styled';
+import AppBar from './AppBar';
+import Board from "./Board";
+import Footer from "./Footer";
 
 const styles = (theme) => ({
     root: {}

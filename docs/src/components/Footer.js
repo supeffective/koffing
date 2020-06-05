@@ -1,19 +1,19 @@
 "use strict";
 
 import React from 'react';
-import styled from 'styled';
-import Grid from 'material-ui/Grid';
-import Typo from 'material-ui/Typography';
+import styled from '../styled';
+import Grid from '@material-ui/core/Grid';
+import Typo from '@material-ui/core/Typography';
 
 const styles = (theme) => ({
     root: theme.mixins.gutters({
         paddingTop: 16,
         paddingBottom: 16,
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(),
         flexGlow: 1
     }),
     footer: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing() * 2,
         textAlign: 'center'
     }
 });
@@ -23,7 +23,7 @@ class AppComponent extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Grid container spacing={24}>
+                <Grid container spacing={10}>
                     <Grid item sm={12} md={12}>
                         <div className={classes.footer}>
                             <Typo variant="caption" component="p">

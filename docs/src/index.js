@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createMuiTheme, MuiThemeProvider} from 'material-ui/styles';
+import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import AppComponent from 'components/App';
 
 const theme = createMuiTheme({
@@ -16,7 +16,7 @@ const theme = createMuiTheme({
 });
 
 const App = () => (
-    <div>
+    <div className="foobar">
         {/*<CssBaseline/>*//* MUI adds the reset at the end, which is not what we want*/}
         <MuiThemeProvider theme={theme}>
             <AppComponent/>

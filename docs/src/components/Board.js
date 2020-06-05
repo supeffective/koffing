@@ -1,12 +1,12 @@
 "use strict";
 
 import React from 'react';
-import styled from 'styled';
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
-import TextField from "material-ui/TextField";
-import Button from "material-ui/Button";
-import Code from "components/Code";
+import styled from '../styled';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Code from "./Code";
 import {Koffing} from "../../../src/index";
 
 const exampleTeam = `=== [gen7] Folder 1/Example Team ===
@@ -31,18 +31,17 @@ Bold Nature
 - Sludge Bomb
 - Will-O-Wisp
 - Toxic Spikes
-- Taunt
-`;
+- Taunt`;
 
 const styles = (theme) => ({
     root: theme.mixins.gutters({
         paddingTop: 16,
         paddingBottom: 16,
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(),
         flexGlow: 1
     }),
     paper: {
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing() * 2,
         color: theme.palette.text.secondary
     },
     textField: {
@@ -53,7 +52,7 @@ const styles = (theme) => ({
         fontFamily: "monospace",
         fontSize: "1em",
         backgroundColor: theme.palette.secondary.main,
-        padding: theme.spacing.unit
+        padding: theme.spacing()
     }
 });
 
@@ -90,7 +89,7 @@ class BoardComponent extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <Grid container spacing={24}>
+                <Grid container spacing={10}>
                     <Grid item xs={12} sm={12} md={6}>
                         <Paper className={classes.paper} elevation={1}>
                             <TextField
@@ -113,8 +112,8 @@ class BoardComponent extends React.Component {
                                 }}
                                 onChange={this.handleChange}
                             />
-                            <Button onClick={() => this.format()} variant={'raised'} color={'primary'}>Prettify</Button>
-                            &nbsp;<Button onClick={() => this.update('')} variant={'flat'}>Clear</Button>
+                            <Button onClick={() => this.format()} variant={'contained'} color={'primary'}>Prettify</Button>
+                            &nbsp;<Button onClick={() => this.update('')} variant={'text'}>Clear</Button>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
