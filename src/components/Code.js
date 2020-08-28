@@ -14,8 +14,7 @@ const styles = {
 
 class Code extends React.Component {
     render() {
-        const prettify = window.PR; // ! google prettify needs to be loaded first
-        const formattedCode = prettify.prettyPrintOne(this.props.code, this.props.language);
+        const formattedCode = this.props.code;
         const codeClassName = `language-${this.props.language}`;
         const {classes} = this.props;
         return (
