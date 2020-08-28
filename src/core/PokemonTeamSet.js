@@ -1,5 +1,3 @@
-"use strict";
-
 import PokemonTeam from "./PokemonTeam";
 
 class PokemonTeamSet {

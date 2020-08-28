@@ -1,11 +1,10 @@
-"use strict";
-
 import React from 'react';
 import styled from '../styled';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typo from '@material-ui/core/Typography';
 import IconButton from "@material-ui/core/IconButton";
+import koffingImg from "../img/koffing.png";
 
 const title = 'Koffing - Pokémon Showdown Team Parser';
 const sourceUrl = 'https://github.com/itsjavi/koffing';
@@ -37,7 +36,7 @@ class AppBarComponent extends React.Component {
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton aria-label="Home" href="#">
-                            <img className={classes.sprite + " koffing-sprite"} src="assets/img/koffing.png"/>
+                            <img alt="logo" className={classes.sprite + " koffing-sprite"} src={koffingImg} />
                         </IconButton>
                         <Typo style={{fontSize: '1.3125rem'}} color="inherit" className={classes.title}>
                             {title}

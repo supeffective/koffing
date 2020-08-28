@@ -1,8 +1,6 @@
-"use strict";
-
-import Pokemon from "Pokemon";
-import PokemonTeam from "PokemonTeam";
-import PokemonTeamSet from "PokemonTeamSet";
+import Pokemon from "./Pokemon";
+import PokemonTeam from "./PokemonTeam";
+import PokemonTeamSet from "./PokemonTeamSet";
 
 /**
  * Ported from Pokemon Showdown Client's exportTeam/importTeam functions.

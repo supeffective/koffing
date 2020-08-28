@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
@@ -16,7 +14,7 @@ const styles = {
 
 class Code extends React.Component {
     render() {
-        const prettify = PR; // google prettify needs to be loaded first
+        const prettify = window.PR; // ! google prettify needs to be loaded first
         const formattedCode = prettify.prettyPrintOne(this.props.code, this.props.language);
         const codeClassName = `language-${this.props.language}`;
         const {classes} = this.props;

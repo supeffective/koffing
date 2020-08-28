@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import styled from '../styled';
 import AppBar from './AppBar';
@@ -10,7 +8,7 @@ const styles = (theme) => ({
     root: {}
 });
 
-class AppComponent extends React.Component {
+class AppWrapper extends React.Component {
     render() {
         const {classes} = this.props;
         return (
@@ -23,4 +21,4 @@ class AppComponent extends React.Component {
     }
 }
 
-export default styled(AppComponent, styles);
+export default styled(AppWrapper, styles);

@@ -1,16 +1,22 @@
 default:build
 
 build:
-	echo "> Building dist..."
-	npx webpack --mode production
-	echo "[DONE]"
-	echo "> Building docs..."
-	npx webpack --config ./webpack.config-docs.js --mode production
-	echo "[DONE]"
+	yarn build
 
-start:
-	echo "> Starting local webpack server with hot refresh..."
-	npx webpack-dev-server --config ./webpack.config-docs.js --mode development
+audit-fix:
+	rm -rf package-lock.json ./node_modules
+	npm i --package-lock-only
+	npm audit fix
+	rm -f yarn.lock
+	yarn import
+	rm -f package-lock.json
+
+gh-pages:
+	node tasks/gh-pages-prepare.js
+
+gh-pages-deploy: gh-pages
+	cd build
+	git push
 
 $(V).SILENT:
 .PHONY: build

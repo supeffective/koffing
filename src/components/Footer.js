@@ -1,5 +1,3 @@
-"use strict";
-
 import React from 'react';
 import styled from '../styled';
 import Grid from '@material-ui/core/Grid';
@@ -27,7 +25,8 @@ class AppComponent extends React.Component {
                     <Grid item sm={12} md={12}>
                         <div className={classes.footer}>
                             <Typo variant="caption" component="p">
-                                <span>Created by </span><a href="https://itsjavi.com" target="_blank">@itsjavi</a>
+                                <span>Created by </span>
+                                <a href="https://itsjavi.com" rel="noreferrer noopener" target="_blank">@itsjavi</a>
                                 &nbsp; | &nbsp;
                                 <span>Powered by ReactJS, Webpack, Babel and Material UI.</span>
                             </Typo>
