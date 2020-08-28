@@ -1,5 +1,8 @@
 default:build
 
+clean:
+	rm -rf ./build
+
 build:
 	yarn build
 
@@ -11,12 +14,8 @@ audit-fix:
 	yarn import
 	rm -f package-lock.json
 
-gh-pages:
-	node tasks/gh-pages-prepare.js
-
-gh-pages-deploy: gh-pages
-	cd build
-	git push
+gh-pages: build
+	npx gh-pages-publish
 
 $(V).SILENT:
 .PHONY: build

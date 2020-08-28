@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "make gh-pages-deploy"
+    "deploy": "make gh-pages"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,5 +42,8 @@
     "repository": "git@github.com:itsjavi/koffing.git",
     "directory": "build",
     "commitMessage": "update gh-pages build"
+  },
+  "devDependencies": {
+    "gh-pages-publish": "https://github.com/itsjavi/node-gh-pages-deploy#1.2.0"
   }
 }
