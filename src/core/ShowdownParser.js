@@ -15,7 +15,7 @@ class ShowdownParser {
         /**
          * @type {String}
          */
-        this.code = code + "";
+        this.code = code.trim() + "";
     }
 
     /**

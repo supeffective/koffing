@@ -1,16 +1,17 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
-import styled from '../tools/styled';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Code from "./Code";
-import {Koffing} from "../core/Koffing";
-import exampleTeam from "../resources/example.koffing";
-import koffingImg from "../img/koffing.png";
-import base64 from "../tools/base64";
+import Code from "../Code";
+import {Koffing} from "../../core/Koffing";
+import exampleTeam from "../../teams/example.koffing";
+import koffingImg from "../../img/koffing.png";
+import base64 from "../../tools/base64";
+import styles from "./Board.css";
+import StyledComponent from "../StyledComponent";
 
 const qrIconSettings = {
   src: koffingImg,
@@ -19,39 +20,7 @@ const qrIconSettings = {
   excavate: true
 }
 
-const styles = (theme) => ({
-  root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing(),
-    flexGlow: 1
-  }),
-  paper: {
-    padding: theme.spacing() * 2,
-    color: theme.palette.text.secondary
-  },
-  textField: {
-    marginTop: 0,
-    overflow: 'hidden'
-  },
-  textArea: {
-    fontFamily: "monospace",
-    fontSize: "1em",
-    backgroundColor: theme.palette.secondary.main,
-    padding: theme.spacing()
-  },
-  qrContainer: {
-    padding: theme.spacing() * 2,
-    textAlign: "center",
-    backgroundColor: "#dde0f6"
-  },
-  jsonContainer: {
-    padding: theme.spacing() * 2,
-    backgroundColor: "#fafafa"
-  }
-});
-
-class BoardComponent extends React.Component {
+class BoardComponent extends StyledComponent {
   constructor(props) {
     super(props);
     this.state = {text: '', json: '', jsonObj: {teams: [{name: ""}]}};
@@ -92,6 +61,7 @@ class BoardComponent extends React.Component {
   }
 
   update(value) {
+    value = value.trimStart();
     this.setState({
       text: value,
       json: Koffing.toJson(value),
@@ -149,7 +119,8 @@ class BoardComponent extends React.Component {
           <Grid item xs={12} sm={12} md={6}>
             <Paper className={classes.paper} elevation={1}>
               <Paper className={classes.qrContainer}>
-                <QRCode value={this.getTeamUrl(this.state.text)} size={320} renderAs="canvas" imageSettings={qrIconSettings}/>
+                <QRCode value={this.getTeamUrl(this.state.text)} size={320} renderAs="canvas"
+                        imageSettings={qrIconSettings}/>
               </Paper>
               <Paper className={classes.jsonContainer}>
                 <Code code={this.state.json} language={'json'}/>
@@ -162,4 +133,4 @@ class BoardComponent extends React.Component {
   }
 }
 
-export default styled(BoardComponent, styles);
+export default BoardComponent.styled(styles);

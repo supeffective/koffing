@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+import StyledComponent from "../StyledComponent";
+import styles from "./Code.css";
 
-const styles = {
-  root: {
-    margin: '6px 0'
-  },
-  pre: {
-    margin: 0,
-    border: 'none !important',
-    color: '#008008'
-  }
-};
+class Code extends StyledComponent {
+  static propTypes = Object.assign({}, super.propTypes, {
+    language: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
+  })
 
-class Code extends React.Component {
   render() {
     const formattedCode = this.props.code;
     const codeClassName = `language-${this.props.language}`;
@@ -30,10 +25,4 @@ class Code extends React.Component {
   }
 }
 
-Code.propTypes = {
-  classes: PropTypes.object.isRequired,
-  code: PropTypes.string.isRequired,
-  language: PropTypes.string.isRequired,
-};
-
-export default withStyles(styles)(Code);
+export default Code.styled(styles);

@@ -1,4 +1,5 @@
-const team = `=== [gen7] Folder 1/Example Team ===
+export default `
+=== [gen7] Folder 1/Example Team ===
 
 Smogon (Koffing) (F) @ Eviolite
 Level: 5
@@ -20,6 +21,5 @@ Bold Nature
 - Sludge Bomb
 - Will-O-Wisp
 - Toxic Spikes
-- Taunt`;
-
-export default team;
+- Taunt
+`;
