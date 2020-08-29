@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/koffing/static/css/main.3ebdc5a1.chunk.css",
-    "main.js": "/koffing/static/js/main.895ae929.chunk.js",
-    "main.js.map": "/koffing/static/js/main.895ae929.chunk.js.map",
+    "main.js": "/koffing/static/js/main.75ac1980.chunk.js",
+    "main.js.map": "/koffing/static/js/main.75ac1980.chunk.js.map",
     "runtime-main.js": "/koffing/static/js/runtime-main.a614e034.js",
     "runtime-main.js.map": "/koffing/static/js/runtime-main.a614e034.js.map",
     "static/js/2.3b758a53.chunk.js": "/koffing/static/js/2.3b758a53.chunk.js",
     "static/js/2.3b758a53.chunk.js.map": "/koffing/static/js/2.3b758a53.chunk.js.map",
     "index.html": "/koffing/index.html",
-    "precache-manifest.a46833d4f168cb68acae1bac236cfb31.js": "/koffing/precache-manifest.a46833d4f168cb68acae1bac236cfb31.js",
+    "precache-manifest.c81ef1a59fd9f834de15353ca372ebac.js": "/koffing/precache-manifest.c81ef1a59fd9f834de15353ca372ebac.js",
     "service-worker.js": "/koffing/service-worker.js",
     "static/css/main.3ebdc5a1.chunk.css.map": "/koffing/static/css/main.3ebdc5a1.chunk.css.map",
     "static/js/2.3b758a53.chunk.js.LICENSE.txt": "/koffing/static/js/2.3b758a53.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a614e034.js",
     "static/js/2.3b758a53.chunk.js",
     "static/css/main.3ebdc5a1.chunk.css",
-    "static/js/main.895ae929.chunk.js"
+    "static/js/main.75ac1980.chunk.js"
   ]
 }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/koffing/precache-manifest.a46833d4f168cb68acae1bac236cfb31.js"
+  "/koffing/precache-manifest.c81ef1a59fd9f834de15353ca372ebac.js"
 );
 
 self.addEventListener('message', (event) => {
