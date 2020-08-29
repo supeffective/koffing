@@ -149,10 +149,7 @@ class BoardComponent extends React.Component {
           <Grid item xs={12} sm={12} md={6}>
             <Paper className={classes.paper} elevation={1}>
               <Paper className={classes.qrContainer}>
-                <QRCode value={this.state.text} size={320} renderAs="canvas" imageSettings={qrIconSettings}/>
-                <br/>
-                {/*<Button target="_blank" href={this.getTeamUrl(this.state.text)}*/}
-                {/*        variant={'contained'} color={'primary'} size="small">Get link</Button>*/}
+                <QRCode value={this.getTeamUrl(this.state.text)} size={320} renderAs="canvas" imageSettings={qrIconSettings}/>
               </Paper>
               <Paper className={classes.jsonContainer}>
                 <Code code={this.state.json} language={'json'}/>
