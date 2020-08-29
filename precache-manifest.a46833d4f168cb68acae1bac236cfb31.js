@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "166d9e96f7202af67dc00d941a71aca0",
+    "revision": "3520bd574e186321a15f38f00568722d",
     "url": "/koffing/index.html"
   },
   {
-    "revision": "1a4aa103a5f809be9bca",
+    "revision": "e24203f164a3414c1522",
     "url": "/koffing/static/css/main.3ebdc5a1.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/koffing/static/js/2.3b758a53.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1a4aa103a5f809be9bca",
-    "url": "/koffing/static/js/main.284cc1ef.chunk.js"
+    "revision": "e24203f164a3414c1522",
+    "url": "/koffing/static/js/main.895ae929.chunk.js"
   },
   {
     "revision": "92fe9a0510baba865291",
