@@ -69,7 +69,7 @@ class BoardComponent extends React.Component {
   }
 
   getTeamUrl(teamCode) {
-    return window.location.origin + "?team=" + base64.encode(teamCode);
+    return window.location.origin + window.location.pathname + "?team=" + base64.encode(teamCode);
   }
 
   encodeTeam(teamCode) {

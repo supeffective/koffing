@@ -5,6 +5,7 @@
     "url": "https://github.com/itsjavi/koffing",
     "type": "git"
   },
+  "homepage": "/koffing",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
