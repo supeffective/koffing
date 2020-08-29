@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '../styled';
+import styled from '../tools/styled';
 import AppBar from './AppBar';
 import Board from "./Board";
 import Footer from "./Footer";

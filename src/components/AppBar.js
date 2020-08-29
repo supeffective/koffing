@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '../styled';
+import styled from '../tools/styled';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typo from '@material-ui/core/Typography';
@@ -38,7 +38,7 @@ class AppBarComponent extends React.Component {
                         <IconButton aria-label="Home" href="#">
                             <img alt="logo" className={classes.sprite + " koffing-sprite"} src={koffingImg} />
                         </IconButton>
-                        <Typo style={{fontSize: '1.3125rem'}} color="inherit" className={classes.title}>
+                        <Typo component="h1" style={{fontSize: '1.3125rem'}} color="inherit" className={classes.title}>
                             {title}
                         </Typo>
                         <IconButton color="inherit" href={sourceUrl} title="Source Code">

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '../styled';
+import styled from '../tools/styled';
 import Grid from '@material-ui/core/Grid';
 import Typo from '@material-ui/core/Typography';
 

@@ -1,14 +1,16 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
-import styled from '../styled';
+import styled from '../tools/styled';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import Code from "./Code";
 import {Koffing} from "../core/Koffing";
 import exampleTeam from "../resources/example.koffing";
 import koffingImg from "../img/koffing.png";
+import base64 from "../tools/base64";
 
 const qrIconSettings = {
   src: koffingImg,
@@ -52,19 +54,41 @@ const styles = (theme) => ({
 class BoardComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text: '', json: ''};
+    this.state = {text: '', json: '', jsonObj: {teams: [{name: ""}]}};
 
     this.handleChange = this.handleChange.bind(this);
   }
 
+  loadTeam() {
+    const params = new URLSearchParams(window.location.search);
+    let teamCode = params.get("team");
+    if (teamCode === null) {
+      return exampleTeam;
+    }
+    return this.decodeTeam(teamCode);
+  }
+
+  getTeamUrl(teamCode) {
+    return window.location.origin + "?team=" + base64.encode(teamCode);
+  }
+
+  encodeTeam(teamCode) {
+    return base64.encode(teamCode);
+  }
+
+  decodeTeam(teamCode) {
+    return base64.decode(teamCode);
+  }
+
   componentDidMount() {
-    this.update(exampleTeam);
+    this.update(this.loadTeam());
   }
 
   update(value) {
     this.setState({
       text: value,
-      json: Koffing.toJson(value)
+      json: Koffing.toJson(value),
+      jsonObj: JSON.parse(Koffing.toJson(value))
     });
   }
 
@@ -82,6 +106,11 @@ class BoardComponent extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.root}>
+        <Grid container spacing={10}>
+          <Grid item xs={12} sm={12} md={6} style={{paddingBottom: "1em"}}>
+            <Typography variant="h4" component="h2">{this.state.jsonObj.teams[0].name}</Typography>
+          </Grid>
+        </Grid>
         <Grid container spacing={10}>
           <Grid item xs={12} sm={12} md={6}>
             <Paper className={classes.paper} elevation={1}>
@@ -113,9 +142,12 @@ class BoardComponent extends React.Component {
             <Paper className={classes.paper} elevation={1}>
               <Paper className={classes.qrContainer}>
                 <QRCode value={this.state.text} size={320} renderAs="canvas" imageSettings={qrIconSettings}/>
+                <br/>
+                <Button target="_blank" href={this.getTeamUrl(this.state.text)}
+                        variant={'contained'} color={'primary'} size="small">Get link</Button>
               </Paper>
               <Paper className={classes.jsonContainer}>
-                <Code code={this.state.json} language={'json'} />
+                <Code code={this.state.json} language={'json'}/>
               </Paper>
             </Paper>
           </Grid>
