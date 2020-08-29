@@ -14,8 +14,8 @@ import base64 from "../tools/base64";
 
 const qrIconSettings = {
   src: koffingImg,
-  height: 32,
-  width: 32,
+  height: 48,
+  width: 48,
   excavate: true
 }
 
@@ -60,16 +60,19 @@ class BoardComponent extends React.Component {
   }
 
   loadTeam() {
-    const params = new URLSearchParams(window.location.search);
-    let teamCode = params.get("team");
-    if (teamCode === null) {
+    let teamCode = window.location.hash.replace(/^#/, '');
+    if (teamCode === '') {
       return exampleTeam;
     }
     return this.decodeTeam(teamCode);
   }
 
   getTeamUrl(teamCode) {
-    return window.location.origin + window.location.pathname + "?team=" + base64.encode(teamCode);
+    return window.location.origin + window.location.pathname + this.getTeamHash(teamCode);
+  }
+
+  getTeamHash(teamCode) {
+    return "#" + base64.encode(teamCode);
   }
 
   encodeTeam(teamCode) {
@@ -82,6 +85,10 @@ class BoardComponent extends React.Component {
 
   componentDidMount() {
     this.update(this.loadTeam());
+
+    window.addEventListener("popstate", (e) => {
+      this.update(this.loadTeam());
+    });
   }
 
   update(value) {
@@ -94,6 +101,7 @@ class BoardComponent extends React.Component {
 
   handleChange(event) {
     this.update(event.target.value);
+    window.history.pushState(null, null, this.getTeamHash(event.target.value));
   }
 
   format() {
@@ -143,8 +151,8 @@ class BoardComponent extends React.Component {
               <Paper className={classes.qrContainer}>
                 <QRCode value={this.state.text} size={320} renderAs="canvas" imageSettings={qrIconSettings}/>
                 <br/>
-                <Button target="_blank" href={this.getTeamUrl(this.state.text)}
-                        variant={'contained'} color={'primary'} size="small">Get link</Button>
+                {/*<Button target="_blank" href={this.getTeamUrl(this.state.text)}*/}
+                {/*        variant={'contained'} color={'primary'} size="small">Get link</Button>*/}
               </Paper>
               <Paper className={classes.jsonContainer}>
                 <Code code={this.state.json} language={'json'}/>

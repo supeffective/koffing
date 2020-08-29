@@ -27,6 +27,8 @@ class AppComponent extends React.Component {
                             <Typo variant="caption" component="p">
                                 <span>Created by </span>
                                 <a href="https://itsjavi.com" rel="noreferrer noopener" target="_blank">@itsjavi</a>
+                                /
+                                <a href="https://route1rodent.com" rel="noreferrer noopener" target="_blank">@route1rodent</a>
                                 &nbsp; | &nbsp;
                                 <span>Powered by ReactJS, Webpack, Babel and Material UI.</span>
                             </Typo>
