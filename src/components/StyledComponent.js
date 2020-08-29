@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
+// eslint-disable-next-line no-unused-vars
 import {StyledComponentProps} from '@material-ui/styles/withStyles'
 
 /**

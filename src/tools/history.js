@@ -8,9 +8,10 @@ export default {
   pushState(state) {
     window.history.pushState(null, null, state);
   },
-  onPopState(callback) {
-    window.addEventListener("popstate", (e) => {
-      callback(e);
-    });
+  addListener(callback) {
+    window.addEventListener("popstate", callback, false);
+  },
+  removeListener(callback) {
+    window.removeEventListener("popstate", callback, false);
   }
 }

@@ -1,9 +1,7 @@
-export default (theme) => ({
+import {makeStyles} from '@material-ui/core/styles';
+
+export default makeStyles((theme) => ({
   root: {
-    padding: theme.spacing() * 2,
-    color: theme.palette.text.secondary
-  },
-  textField: {
     marginTop: 0,
     overflow: 'hidden'
   },
@@ -13,4 +11,4 @@ export default (theme) => ({
     backgroundColor: theme.palette.secondary.main,
     padding: theme.spacing()
   }
-})
+}))

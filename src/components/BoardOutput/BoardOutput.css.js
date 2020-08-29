@@ -1,11 +1,7 @@
-export default (theme) => ({
-  root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing(),
-    flexGlow: 1
-  }),
-  paper: {
+import {makeStyles} from '@material-ui/core/styles';
+
+export default makeStyles((theme) => ({
+  root: {
     padding: theme.spacing() * 2,
     color: theme.palette.text.secondary
   },
@@ -18,4 +14,4 @@ export default (theme) => ({
     padding: theme.spacing() * 2,
     backgroundColor: "#fafafa"
   }
-})
+}))

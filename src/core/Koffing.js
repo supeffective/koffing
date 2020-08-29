@@ -68,7 +68,4 @@ class Koffing {
     }
 }
 
-export {
-    Koffing,
-    ShowdownParser
-};
+export default Koffing;

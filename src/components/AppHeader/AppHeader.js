@@ -10,7 +10,7 @@ import styles from "./AppHeader.css";
 
 class AppHeader extends StyledComponent {
   render() {
-    const classes = this.props;
+    const {classes} = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
