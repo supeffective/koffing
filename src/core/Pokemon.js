@@ -32,6 +32,10 @@ class Pokemon {
          * @type {Number}
          */
         this.happiness = undefined;
+        /** 
+         * @type {String}
+         */
+        this.teratype = undefined;
         /**
          * @type {String}
          */
@@ -64,6 +68,7 @@ class Pokemon {
         p.level = obj.level;
         p.shiny = obj.shiny;
         p.happiness = obj.happiness;
+        p.teratype = obj.teratype;
         p.nature = obj.nature;
         p.evs = obj.evs;
         p.ivs = obj.ivs;
@@ -116,6 +121,10 @@ class Pokemon {
 
         if (!isNaN(this.happiness)) {
             str += `Happiness: ${this.happiness}\n`;
+        }
+        
+        if (this.teratype) {
+          str += `Tera Type: ${this.teratype}\n`;
         }
 
         if (this.nature) {
