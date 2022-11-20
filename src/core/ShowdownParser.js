@@ -188,7 +188,7 @@ class ShowdownParser {
     _parseKeyValuePairs(line, pokemon) {
         const rg = ShowdownParser.regexes;
 
-        return ['ability', 'level', 'shiny', 'happiness', 'nature'].some(
+        return ['ability', 'level', 'shiny', 'happiness', 'teratype', 'nature'].some(
             function (key) {
                 if (line.match(rg[key])) {
                     pokemon[key] = rg[key].exec(line)[1].trim();
@@ -270,6 +270,7 @@ ShowdownParser.regexes = {
     level: /^Level:\s?([0-9]{1,3})$/i,
     shiny: /^Shiny:\s?(Yes|No)$/i,
     happiness: /^Happiness:\s?([0-9]{1,3})$/i,
+    teratype: /^Tera Type:\s?(.*)$/i,
     eivs: /^([EI]Vs):\s?(.*)$/i,
     eivs_value: /^([0-9]+)\s+(hp|atk|def|spa|spd|spe)$/i,
     nature: /^(.*)\s+Nature$/,
