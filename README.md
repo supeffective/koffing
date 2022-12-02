@@ -1,4 +1,5 @@
 # Koffing
+
 Koffing is a Pokemon Showdown Team parser that converts your strategies to
 machine-readable JSON code.
 
@@ -21,16 +22,18 @@ Showdown team exports.
 - Sanitizes Showdown code (removing invalid data, applying max and mins values, etc.)
 - Prettifies Showdown code (proper indentation, line breaks and sorting of the data, etc.)
 - [Online Parser](https://itsjavi.github.io/koffing), which is using the library
-featuring all the above mentioned.
+  featuring all the above mentioned.
 
 ## Installation
 
 As a package:
+
 ```bash
 npm i --save koffing
 ```
 
 In the browser, using a CDN:
+
 ```html
 <script src="https://cdn.rawgit.com/itsjavi/koffing/0.4.0/dist/koffing.min.js"></script>
 ```
@@ -38,24 +41,26 @@ In the browser, using a CDN:
 ## Usage
 
 ### Javascript (ES5, web)
+
 ```html
 <script src="dist/koffing.min.js"></script>
 <script>
-var teamCode = `=== [gen7] Folder 1/Example Team ===`;
-var parsedTeam = Koffing.parse(teamCode);
-console.log(parsedTeam);
+  var teamCode = `=== [gen7] Folder 1/Example Team ===`
+  var parsedTeam = Koffing.parse(teamCode)
+  console.log(parsedTeam)
 
-// Note that the ShowdownParser class, which is used internally by the Koffing class
-// is also exposed in the global scope:
-console.log(new ShowdownParser(teamCode).parse());
+  // Note that the ShowdownParser class, which is used internally by the Koffing class
+  // is also exposed in the global scope:
+  console.log(new ShowdownParser(teamCode).parse())
 </script>
 ```
 
 ### Javascript (ES6+, universal)
-```js
-"use strict";
 
-import {Koffing} from 'koffing';
+```js
+'use strict'
+
+import { Koffing } from 'koffing'
 
 const teamCode = `
 === [gen7] Folder 1/Example Team ===
@@ -71,49 +76,50 @@ Bold Nature
 - Will-O-Wisp
 - Pain Split
 - Sludge Bomb
-- Fire Blast`;
+- Fire Blast`
 
-
-let parsedTeam = Koffing.parse(teamCode);
+let parsedTeam = Koffing.parse(teamCode)
 
 // This will log a PokémonTeamSet object:
-console.log(parsedTeam);
+console.log(parsedTeam)
 // Convert it back to the Showdown format (prettified):
-console.log(parsedTeam.toShowdown());
+console.log(parsedTeam.toShowdown())
 // which is the same as:
-console.log(parsedTeam.toString());
+console.log(parsedTeam.toString())
 // and the same as:
-console.log(parsedTeam + "");
+console.log(parsedTeam + '')
 // You can also convert the object to JSON:
-console.log(parsedTeam.toJson());
+console.log(parsedTeam.toJson())
 // which is the same as:
-console.log(Koffing.toJson(teamCode));
+console.log(Koffing.toJson(teamCode))
 ```
 
 ### NodeJS
-```js
-const Koffing = require('koffing').Koffing;
 
-const teamCode = `=== [gen7] Folder 1/Example Team ===`;
-let parsedTeam = Koffing.parse(teamCode);
-console.log(parsedTeam);
+```js
+const Koffing = require('koffing').Koffing
+
+const teamCode = `=== [gen7] Folder 1/Example Team ===`
+let parsedTeam = Koffing.parse(teamCode)
+console.log(parsedTeam)
 ```
 
-
 ## Class Reference
+
 The `Koffing` class is basically a wrapper of the `ShowdownParser` class, the difference is that it can be used statically.
 
 `ShowdownParser` class methods:
+
 - `parse(): PokemonTeamSet`: Parses the Showdown code and returns a `PokemonTeamSet` object.
 - `format(): String`: Parses the Showdown code and returns a prettified and sanitized version of it.
 - `toString(): String`: Basically returns the internal Showdown code string as it is.
 
 `Koffing` class methods:
+
 - `static parse(showdownCode): PokemonTeamSet`: Wrapper for `ShowdownParser.prototype.parse()`
 - `static format(showdownCode): String`: Wrapper for `ShowdownParser.prototype.format()`
 - `static toJson(showdownCode): String`: Wrapper for `ShowdownParser.prototype.parse().toJson()`
 - `static toShowdown(jsonCode): String`: Wrapper for `ShowdownParser.prototype.parse().toShowdown()`
-
 
 ## React App
 
@@ -161,7 +167,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
 
 ## License
 

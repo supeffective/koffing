@@ -1,0 +1,9 @@
+.next/
+out/
+build/
+dist/
+node_modules/
+public/
+storybook-static/
+.coverage/
+.turbo/

@@ -1,0 +1,11 @@
+node_modules
+dist
+.turbo
+.yarn
+.vscode
+.devcontainer
+.github
+.husky
+public
+.eslintrc.js
+*.eslintrc.js

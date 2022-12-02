@@ -1,0 +1,14 @@
+{
+  "name": "@packages/preset-ts",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "tsconfig/*.json"
+  ],
+  "dependencies": {
+    "typescript": "4.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
