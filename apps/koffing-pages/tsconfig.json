@@ -1,0 +1,4 @@
+{
+  "extends": "@packages/preset-ts/tsconfig/create-react-app.json",
+  "include": ["./src"]
+}

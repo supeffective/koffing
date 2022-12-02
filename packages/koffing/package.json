@@ -5,15 +5,15 @@
     "url": "https://github.com/itsjavi/koffing",
     "type": "git"
   },
-  "main": "./src/index.tsx",
-  "types": "./src/index.tsx",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "module": "./dist/index.mjs",
   "license": "MIT",
   "scripts": {
-    "dev": "tsup src/index.tsx --format=esm,cjs --watch --dts --external react",
+    "dev": "tsup src/index.ts --format=esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"**/*.ts*\"",
     "lint:ci": "yarn run lint",
-    "build": "tsup src/index.tsx --format=esm,cjs --dts --external react",
+    "build": "tsup src/index.ts --format=esm,cjs --dts --external react",
     "build:ci": "yarn run build",
     "test": "jest --verbose --coverage --coverageDirectory=.coverage",
     "test:ci": "jest --runInBand --ci --coverage --coverageDirectory=.coverage"
