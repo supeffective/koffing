@@ -25,6 +25,9 @@ bash:
 test:
 	${DCR} app yarn test
 
+test-workflows: # you need to have 'act' installed in your OS for this
+	act
+
 build:
 	${DCR} app yarn build
 

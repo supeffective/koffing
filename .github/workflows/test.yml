@@ -1,4 +1,4 @@
-name: 'lint/build/test'
+name: 'test'
 on:
   push:
     branches:
@@ -9,7 +9,7 @@ on:
       - develop
 jobs:
   build:
-    name: Lint and Build
+    name: Lint, Build and Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,11 +28,11 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
 
-      # YARN_CHECKSUM_BEHAVIOR=update,   is needed to install github-based dependencies, but is not safe.
+      # 'YARN_CHECKSUM_BEHAVIOR=update' env var is needed to install git-based dependencies, but is not safe.
       - name: Install dependencies
         run: |
-          YARN_CHECKSUM_BEHAVIOR=update corepack enable
-          YARN_CHECKSUM_BEHAVIOR=update yarn install
+          corepack enable
+          yarn install
 
       - name: Lint source
         run: |
