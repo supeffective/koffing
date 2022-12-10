@@ -59,7 +59,7 @@ In the browser, using a CDN:
 </script>
 ```
 
-### Javascript (ES6+, universal)
+### Javascript/TypeScript (ES Modules)
 
 ```js
 'use strict'
@@ -82,20 +82,15 @@ Bold Nature
 - Sludge Bomb
 - Fire Blast`
 
-let parsedTeam = Koffing.parse(teamCode)
+const parsedTeam = Koffing.parse(teamCode)
 
-// This will log a PokémonTeamSet object:
+// This will log a PokemonTeamSet object:
 console.log(parsedTeam)
-// Convert it back to the Showdown format (prettified):
+
+// Convert it back to the Showdown format (prettified). These 3 lines are equivalent:
 console.log(parsedTeam.toShowdown())
-// which is the same as:
 console.log(parsedTeam.toString())
-// and the same as:
 console.log(parsedTeam + '')
-// You can also convert the object to JSON:
-console.log(parsedTeam.toJson())
-// which is the same as:
-console.log(Koffing.toJson(teamCode))
 ```
 
 ### NodeJS
@@ -104,26 +99,8 @@ console.log(Koffing.toJson(teamCode))
 const Koffing = require('koffing').Koffing
 
 const teamCode = `=== [gen7] Folder 1/Example Team ===`
-let parsedTeam = Koffing.parse(teamCode)
-console.log(parsedTeam)
+const parsedTeam = Koffing.parse(teamCode)
 ```
-
-## Class Reference
-
-The `Koffing` class is basically a wrapper of the `ShowdownParser` class, the difference is that it can be used statically.
-
-`ShowdownParser` class methods:
-
-- `parse(): PokemonTeamSet`: Parses the Showdown code and returns a `PokemonTeamSet` object.
-- `format(): String`: Parses the Showdown code and returns a prettified and sanitized version of it.
-- `toString(): String`: Basically returns the internal Showdown code string as it is.
-
-`Koffing` class methods:
-
-- `static parse(showdownCode): PokemonTeamSet`: Wrapper for `ShowdownParser.prototype.parse()`
-- `static format(showdownCode): String`: Wrapper for `ShowdownParser.prototype.format()`
-- `static toJson(showdownCode): String`: Wrapper for `ShowdownParser.prototype.parse().toJson()`
-- `static toShowdown(jsonCode): String`: Wrapper for `ShowdownParser.prototype.parse().toShowdown()`
 
 ## License
 
