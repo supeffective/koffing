@@ -36,18 +36,12 @@ npm i koffing
 yarn add koffing
 ```
 
-In the browser, using a CDN:
-
-```html
-<script src="https://cdn.rawgit.com/itsjavi/koffing/0.6.0/dist/koffing.min.js"></script>
-```
-
 ## Usage
 
 ### Javascript (ES5, web)
 
 ```html
-<script src="dist/koffing.min.js"></script>
+<script src="https://unpkg.com/koffing@latest/dist/index.js"></script>
 <script>
   var teamCode = `=== [gen7] Folder 1/Example Team ===`
   var parsedTeam = Koffing.parse(teamCode)
@@ -64,6 +58,8 @@ In the browser, using a CDN:
 ```js
 'use strict'
 
+import { Koffing } from 'https://unpkg.com/koffing@latest/dist/index.mjs'
+// or
 import { Koffing } from 'koffing'
 
 const teamCode = `
