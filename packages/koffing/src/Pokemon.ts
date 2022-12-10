@@ -7,21 +7,26 @@ export type PokemonStats = {
   spe: number
 }
 
+export type PokemonGender = 'M' | 'F'
+
 const POKEMON_STAT_NAMES = ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe']
 
 export class Pokemon {
   name: string | undefined
   nickname: string | undefined
-  gender: string | undefined
+  gender: PokemonGender | undefined
   item: string | undefined
+  pokeball: string | undefined
   ability: string | undefined
   level: number | undefined
   shiny: boolean | undefined
   happiness: number | undefined
-  teratype: string | undefined
   nature: string | undefined
   evs: PokemonStats | undefined
   ivs: PokemonStats | undefined
+  dynamaxLevel: number | undefined
+  gigantamax: boolean | undefined
+  teraType: string | undefined
   moves: string[] = []
 
   static fromObject(obj: Pokemon | Record<string, any>): Pokemon {
@@ -34,10 +39,13 @@ export class Pokemon {
     p.level = obj.level
     p.shiny = obj.shiny
     p.happiness = obj.happiness
-    p.teratype = obj.teratype
     p.nature = obj.nature
     p.evs = obj.evs
     p.ivs = obj.ivs
+    p.teraType = obj.teraType
+    p.dynamaxLevel = obj.dynamaxLevel
+    p.gigantamax = obj.gigantamax
+    p.pokeball = obj.pokeball
     p.moves = Array.isArray(obj.moves) ? obj.moves : []
 
     return p
@@ -66,12 +74,12 @@ export class Pokemon {
 
     str += '\n'
 
-    if (!Number.isNaN(this.level)) {
-      str += `Level: ${this.level}\n`
-    }
-
     if (this.ability) {
       str += `Ability: ${this.ability}\n`
+    }
+
+    if (!Number.isNaN(this.level)) {
+      str += `Level: ${this.level}\n`
     }
 
     if (this.shiny === true) {
@@ -82,12 +90,20 @@ export class Pokemon {
       str += `Happiness: ${this.happiness}\n`
     }
 
-    if (this.teratype) {
-      str += `Tera Type: ${this.teratype}\n`
+    if (this.pokeball) {
+      str += `Pokeball: ${this.pokeball}\n`
     }
 
-    if (this.nature) {
-      str += `${this.nature} Nature\n`
+    if (!Number.isNaN(this.dynamaxLevel)) {
+      str += `Dynamax Level: ${this.dynamaxLevel}\n`
+    }
+
+    if (this.gigantamax === true) {
+      str += `Gigantamax: Yes\n`
+    }
+
+    if (this.teraType) {
+      str += `Tera Type: ${this.teraType}\n`
     }
 
     if (this.evs) {
@@ -103,6 +119,10 @@ export class Pokemon {
           })
           .join(' / ') +
         '\n'
+    }
+
+    if (this.nature) {
+      str += `${this.nature} Nature\n`
     }
 
     if (this.ivs) {

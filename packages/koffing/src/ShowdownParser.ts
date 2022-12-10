@@ -1,30 +1,58 @@
-import { Pokemon } from './Pokemon'
+import { Pokemon, PokemonGender } from './Pokemon'
 import { PokemonTeam } from './PokemonTeam'
 import { PokemonTeamSet } from './PokemonTeamSet'
 
 type ParserState = { team: PokemonTeam | null; pokemon: Pokemon | null }
 
+const clamp = (num: number, min: number, max: number): number => {
+  if (Number.isNaN(num)) {
+    return min
+  }
+  return Math.min(Math.max(num, min), max)
+}
+
 /**
  * Ported from Pokemon Showdown Client's exportTeam/importTeam functions.
  *
- * @see https://github.com/Zarel/Pokemon-Showdown-Client/blob/8994e9e/js/storage.js
+ * @see https://github.com/Zarel/Pokemon-Showdown-Client/blob/master/js/storage.js
  */
 export class ShowdownParser {
   static regexes: Record<string, RegExp> = {
+    // team title line
     team: /^===\s+\[(.*)\]\s+(.*)\s+===$/,
+
+    // pokemon title line
+    nickname_name: /^([^()=@]*)\s+\(([^()=@]{2,})\)/i,
+    name: /^([^()=@]{2,})/i,
     gender: /\((F|M)\)/i,
     item: /@\s?(.*)$/i,
-    name: /^([^()=@]{2,})/i,
-    nickname_name: /^([^()=@]*)\s+\(([^()=@]{2,})\)/i,
-    ability: /^Ability:\s?(.*)$/i,
-    level: /^Level:\s?([0-9]{1,3})$/i,
-    shiny: /^Shiny:\s?(Yes|No)$/i,
-    happiness: /^Happiness:\s?([0-9]{1,3})$/i,
-    teratype: /^Tera Type:\s?(.*)$/i,
+
+    // evs/ivs
     eivs: /^([EI]Vs):\s?(.*)$/i,
     eivs_value: /^([0-9]+)\s+(hp|atk|def|spa|spd|spe)$/i,
-    nature: /^(.*)\s+Nature$/,
+
+    // moves
     move: /^[-~]\s?(.*)$/i,
+
+    // all other key-value properties
+    nature: /^(.*)\s+Nature$/,
+    ability: /^(?:Ability|Trait):\s?(.*)$/i,
+    level: /^Level:\s?([0-9]{1,3})$/i,
+    shiny: /^Shiny:\s?(Yes|No)$/i,
+    happiness: /^(?:Happiness|Friendship):\s?([0-9]{1,3})$/i,
+    pokeball: /^(?:Pokeball|Ball):\s?(.*)$/i,
+    dynamaxLevel: /^Dynamax Level:\s?([0-9]{1,2})$/i,
+    gigantamax: /^Gigantamax:\s?(Yes|No)$/i,
+    teraType: /^Tera Type:\s?(.*)$/i,
+
+    // not supported by Showdown, but by other websites:
+    // ot: /^OT:\s?(.*)$/i,
+    // otgender: /^(?:OT Gender|OTGender):\s?(M|F|Male|Female)$/i,
+    // sid: /^SID:\s?([0-9]{1,10})$/i,
+    // tid: /^TID:\s?([0-9]{1,10})$/i,
+    // language: /^(?:Lang|Language):\s?(.*)$/i,
+    // originmark: /^(?:OriginMark|Origin Mark):\s?(.*)$/i,
+    // hypertraining: /^HT:\s?(.*)$/i,
   }
 
   code: string
@@ -139,7 +167,7 @@ export class ShowdownParser {
     if (line.match(rg.gender)) {
       const genderMatches = rg.gender.exec(line)
       if (genderMatches) {
-        pokemon.gender = genderMatches[1].toUpperCase().trim()
+        pokemon.gender = genderMatches[1].toUpperCase().trim() as PokemonGender
       }
     }
 
@@ -173,11 +201,7 @@ export class ShowdownParser {
         if (!pokemon[prop]) {
           pokemon[prop] = {}
         }
-        pokemon[prop][statData[2]] = parseFloat(statData[1])
-
-        if (pokemon[prop][statData[2]] > limit) {
-          pokemon[prop][statData[2]] = limit
-        }
+        pokemon[prop][statData[2]] = clamp(parseInt(statData[1]), 0, limit)
       })
       return true
     }
@@ -185,47 +209,45 @@ export class ShowdownParser {
   }
 
   _parseKeyValuePairs(line: string, pokemon: Pokemon | any): boolean {
-    const rg = ShowdownParser.regexes
+    const propNames: (keyof Pokemon)[] = [
+      'nature', // string
+      'ability', // string
+      'level', // numeric
+      'shiny', // bool
+      'happiness', // numeric
+      'pokeball', // string
+      'dynamaxLevel', // numeric
+      'gigantamax', // bool
+      'teraType', // string
+    ]
 
-    return [
-      'ability',
-      'level',
-      'shiny',
-      'happiness',
-      'teratype',
-      'nature',
-    ].some(function (key: string) {
-      if (line.match(rg[key])) {
-        const matches = rg[key].exec(line)
-        if (matches === null) {
-          return false
-        }
+    return propNames.some(function (key: keyof Pokemon) {
+      // if (!line.match(ShowdownParser.regexes[key])) {
+      //   return false
+      // }
 
-        pokemon[key] = matches[1].trim()
+      const matches = ShowdownParser.regexes[key].exec(line)
 
-        if (!Number.isNaN(pokemon[key])) {
-          pokemon[key] = parseFloat(pokemon[key])
-        }
-
-        if (key === 'happiness' && pokemon[key] > 255) {
-          pokemon[key] = 255
-        }
-
-        if (key === 'level' && pokemon[key] < 1) {
-          pokemon[key] = 1
-        }
-
-        if (key === 'level' && pokemon[key] > 100) {
-          pokemon[key] = 100
-        }
-
-        if (key === 'shiny') {
-          pokemon[key] = !!pokemon[key].match(/yes/i)
-        }
-
-        return true
+      if (matches === null) {
+        return false
       }
-      return false
+
+      let value: any = matches[1].trim()
+
+      //   Numeric values
+      if (key === 'happiness') {
+        value = clamp(parseInt(value), 0, 255)
+      } else if (key === 'level') {
+        value = clamp(parseInt(value), 1, 100)
+      } else if (key === 'dynamaxLevel') {
+        value = clamp(parseInt(value), 0, 10)
+      } else if (key.match(/^(shiny|gigantamax)$/i)) {
+        // Boolean values
+        value = value.match(/yes/i) !== null ? true : undefined
+      }
+
+      pokemon[key] = value
+      return true
     })
   }
 
