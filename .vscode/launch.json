@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Development server",
+      "name": "Launch Development Container",
       "type": "node-terminal",
       "request": "launch",
       "command": ".devcontainer/run up app",
