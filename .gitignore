@@ -1,25 +1,49 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# storybook
+storybook-static
+
+# developer notes
+/dev.md
+/DEV.md
+
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
+.pnpm-store
+.yarn
 
 # testing
-/coverage
+coverage
+.coverage
+__snapshots__
 
-# production
-/build
+# build output
+dist/
+.output/
+.next/
+out/
+build/
 
 # misc
 .DS_Store
+*.pem
+husky-*.tgz
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# environment variables
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-/tmp
+# turbo
+.turbo
+

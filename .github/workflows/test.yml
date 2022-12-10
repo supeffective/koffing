@@ -1,0 +1,49 @@
+name: 'test'
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - main
+      - develop
+jobs:
+  build:
+    name: Lint, Build and Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['16']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Add node_modules/.bin to $PATH
+        run: |
+          echo "$PWD/node_modules/.bin" >> $GITHUB_PATH
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
+
+      # 'YARN_CHECKSUM_BEHAVIOR=update' env var is needed to install git-based dependencies, but is not safe.
+      - name: Install dependencies
+        run: |
+          corepack enable
+          yarn install
+
+      - name: Lint source
+        run: |
+          yarn run lint:ci
+
+      - name: Build apps and packages
+        run: |
+          yarn run build:ci
+
+      - name: Run tests
+        run: |
+          yarn run test:ci
+        env:
+          CI: true

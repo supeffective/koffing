@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+PROJECT_NAME=$(basename "$PWD")
+DC="docker-compose -f .devcontainer/docker-compose.yml -p ${PROJECT_NAME}"
+
+if [[ "${1}" == "build" || "${1}" == "up" || "${1}" == "stop" || "${1}" == "down" || "${1}" == "restart" || "${1}" == "run" || "${1}" == "exec" ]]; then
+    ${DC} "${@}"
+    exit 0
+fi
+
+if [[ "${1}" == "recreate" ]]; then
+    ${DC} down --remove-orphans
+    ${DC} build
+    ${DC} up -d app
+    exit 0
+fi
+
+
+if [[ "${1}" == "cli" ]]; then
+    ${DC} run --rm app apps/cli/dist/index.mjs "${@:2}"
+    exit 0
+fi
+
+${DC} run --rm "${@}"

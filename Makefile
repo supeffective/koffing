@@ -1,21 +1,45 @@
-default:build
+DCR=.devcontainer/run
 
-clean:
-	rm -rf ./build
+default: build
+up: dev
+dev:
+	${DCR} up -d app
+	sleep 2
+	make open
+
+restart:
+	${DCR} restart
+
+stop:
+	${DCR} stop
+
+install:
+	${DCR} app yarn install
+
+open:
+	open http://localhost:3000
+
+sh: bash
+bash:
+	${DCR} app bash
+
+test:
+	${DCR} app yarn test
+
+test-workflows: # you need to have 'act' installed in your OS for this
+	act
 
 build:
-	yarn build
+	${DCR} app yarn build
 
-audit-fix:
-	rm -rf package-lock.json ./node_modules
-	npm i --package-lock-only
-	npm audit fix
-	rm -f yarn.lock
-	yarn import
-	rm -f package-lock.json
+lint:
+	${DCR} app yarn lint
 
-gh-pages: build
-	npx gh-pages-publish
+format:
+	${DCR} app yarn format
 
-$(V).SILENT:
-.PHONY: build
+ci:
+	${DCR} app yarn ci
+
+pkg:
+	cd packages/koffing && npm publish --dry-run
