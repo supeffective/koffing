@@ -1,6 +1,7 @@
 DCR=.devcontainer/run
 
 default: build
+up: dev
 dev:
 	${DCR} up -d app
 	sleep 2

@@ -1,4 +1,5 @@
 {
-  "extends": "@packages/preset-ts/tsconfig/create-react-app.json",
-  "include": ["./src"]
+  "extends": "@packages/preset-ts/tsconfig/nextjs-app.json",
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
