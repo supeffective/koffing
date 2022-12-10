@@ -8983,6 +8983,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"koffing-monorepo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "koffing-monorepo@workspace:."
+  dependencies:
+    "@packages/preset-eslint": "workspace:^"
+    "@packages/preset-prettier": "workspace:^"
+    "@packages/preset-ts": "workspace:^"
+    husky: ^8.0.2
+    turbo: ^1.6.3
+  languageName: unknown
+  linkType: soft
+
 "koffing-pages@workspace:apps/koffing-pages":
   version: 0.0.0-use.local
   resolution: "koffing-pages@workspace:apps/koffing-pages"
@@ -12430,18 +12442,6 @@ __metadata:
   checksum: fc8f04c34f29c0e9ca63109815df138182d62663dbe9565fcd94161b77a88a639f40c46559d0bb84d7acf9346ce23ea102476fd9168ec279330c7faecefb81eb
   languageName: node
   linkType: hard
-
-"supereffective-assets@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "supereffective-assets@workspace:."
-  dependencies:
-    "@packages/preset-eslint": "workspace:^"
-    "@packages/preset-prettier": "workspace:^"
-    "@packages/preset-ts": "workspace:^"
-    husky: ^8.0.2
-    turbo: ^1.6.3
-  languageName: unknown
-  linkType: soft
 
 "supports-color@npm:^5.3.0":
   version: 5.5.0
