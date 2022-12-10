@@ -1,10 +1,9 @@
 # Koffing
 
+[![npm version](https://badge.fury.io/js/koffing.svg)](https://badge.fury.io/js/koffing)
 ![Build Status](https://github.com/itsjavi/koffing/actions/workflows/CI.yml/badge.svg?branch=develop)
 
 Koffing is a Pokemon Showdown importable-syntax parser for JavaScript and TypeScript.
-
-![koffing](apps/koffing-pages/public/koffing.png) 🔁![koffing](apps/koffing-pages/public/koffing-shiny.png)
 
 [Pokémon Showdown](https://www.pokemonshowdown.com/) is the most popular online Pokémon battle simulator,
 one of the best ways to quickly try your strategies for the official Pokémon VGC Championships. This library is just
