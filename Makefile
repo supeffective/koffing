@@ -40,3 +40,6 @@ format:
 
 ci:
 	${DCR} app yarn ci
+
+pkg:
+	cd packages/koffing && npm publish --dry-run

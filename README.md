@@ -2,8 +2,7 @@
 
 ![Build Status](https://github.com/itsjavi/koffing/actions/workflows/CI.yml/badge.svg?branch=develop)
 
-Koffing is a Pokemon Showdown Team parser that converts your strategies to
-machine-readable JSON code.
+Koffing is a Pokemon Showdown importable-syntax parser for JavaScript and TypeScript.
 
 ![koffing](apps/koffing-pages/public/koffing.png) 🔁![koffing](apps/koffing-pages/public/koffing-shiny.png)
 
@@ -18,9 +17,9 @@ Showdown team exports.
 
 ## Features
 
-- Compatible with web browsers and NodeJS, including ES6+ imports
-- Converts from Showdown code to JSON
-- Converts from JSON to Showdown code
+- Compatible with Gen 9 Pokémon definitions
+- Compatible with web browsers, ES6+, TypeScript and NodeJS
+- Converts from Showdown code to JSON and vice-versa
 - Sanitizes Showdown code (removing invalid data, applying max and mins values, etc.)
 - Prettifies Showdown code (proper indentation, line breaks and sorting of the data, etc.)
 - [Online Parser](https://itsjavi.github.io/koffing), which is using the library
