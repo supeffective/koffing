@@ -1,6 +1,6 @@
 # config files (they will be ignored in language stats)
 *.js linguist-documentation
-*.ts linguist-documentation
+*.css linguist-documentation
 .devcontainer/** linguist-documentation
 **/*.config.js linguist-documentation
 **/*.setup.js linguist-documentation
