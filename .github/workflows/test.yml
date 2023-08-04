@@ -13,37 +13,41 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['16']
+        node: ['18', '20']
     steps:
+<<<<<<< HEAD
       - name: Checkout
         uses: actions/checkout@v3
+=======
+      # -------------- Setup
+      - uses: actions/checkout@v3
+>>>>>>> 37f134d (ci: fix setup)
 
-      - name: Add node_modules/.bin to $PATH
-        run: |
-          echo "$PWD/node_modules/.bin" >> $GITHUB_PATH
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: false
 
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: 'yarn'
+          registry-url: https://npm.pkg.github.com
+          cache: 'pnpm'
+          cache-dependency-path: './pnpm-lock.yaml'
 
-      # 'YARN_CHECKSUM_BEHAVIOR=update' env var is needed to install git-based dependencies, but is not safe.
-      - name: Install dependencies
-        run: |
-          corepack enable
-          yarn install
+      - run: pnpm install --frozen-lockfile
+      # -------------- end of setup
 
       - name: Lint source
         run: |
-          yarn run lint:ci
+          pnpm run lint:ci
 
       - name: Build apps and packages
         run: |
-          yarn run build:ci
+          pnpm run build:ci
 
       - name: Run tests
         run: |
-          yarn run test:ci
+          pnpm run test:ci
         env:
           CI: true
