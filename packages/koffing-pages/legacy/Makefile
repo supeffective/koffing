@@ -4,14 +4,14 @@ clean:
 	rm -rf ./build
 
 build:
-	yarn build
+	pnpm build
 
 audit-fix:
 	rm -rf package-lock.json ./node_modules
 	npm i --package-lock-only
 	npm audit fix
-	rm -f yarn.lock
-	yarn import
+	rm -f pnpm-lock.yaml
+	pnpm import
 	rm -f package-lock.json
 
 gh-pages: build

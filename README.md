@@ -33,7 +33,7 @@ npm i koffing
 
 # or
 
-yarn add koffing
+pnpm add koffing
 ```
 
 ## Usage

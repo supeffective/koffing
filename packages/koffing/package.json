@@ -17,9 +17,9 @@
   "scripts": {
     "dev": "tsup src/index.ts --format=esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"**/*.ts*\"",
-    "lint:ci": "yarn run lint",
+    "lint:ci": "pnpm run lint",
     "build": "tsup src/index.ts --format=esm,cjs --dts --external react",
-    "build:ci": "yarn run build",
+    "build:ci": "pnpm run build",
     "test": "jest --verbose --coverage --coverageDirectory=.coverage",
     "test:ci": "jest --runInBand --ci --coverage --coverageDirectory=.coverage"
   },
