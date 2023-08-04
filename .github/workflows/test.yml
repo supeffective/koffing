@@ -15,13 +15,8 @@ jobs:
       matrix:
         node: ['18', '20']
     steps:
-<<<<<<< HEAD
       - name: Checkout
         uses: actions/checkout@v3
-=======
-      # -------------- Setup
-      - uses: actions/checkout@v3
->>>>>>> 37f134d (ci: fix setup)
 
       - uses: pnpm/action-setup@v2
         with:
