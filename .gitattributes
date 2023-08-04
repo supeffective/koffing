@@ -5,7 +5,6 @@
 **/*.config.js linguist-documentation
 **/*.setup.js linguist-documentation
 **/*rc.js linguist-documentation
-Dockerfile linguist-documentation
 Makefile linguist-documentation
 **/.storybook/* linguist-documentation
 .husky/** linguist-documentation

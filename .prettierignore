@@ -7,3 +7,4 @@ public/
 storybook-static/
 .coverage/
 .turbo/
+pnpm-lock.yaml
